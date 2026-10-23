@@ -1,0 +1,18 @@
+version: rudder/v1
+kind: custom-types
+metadata:
+  name: books-shop-custom-types
+spec:
+  types:
+    - id: event_source_type
+      name: Event_source_type
+      type: string
+      description: Client surface that emitted the event. Always web for Leaf & Lantern Books.
+      config:
+        enum: [web]
+    - id: book_genre_type
+      name: Book_genre_type
+      type: string
+      description: Catalog genre labels shared with books-shop and books-shop-dbt seeds.
+      config:
+        enum: [Fiction, Poetry, History, Science, Design, Business]

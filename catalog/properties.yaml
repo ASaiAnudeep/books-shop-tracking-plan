@@ -1,0 +1,58 @@
+version: rudder/v1
+kind: properties
+metadata:
+  name: books-shop-properties
+spec:
+  properties:
+    - id: path
+      name: path
+      type: string
+      description: Browser path when the event fired (e.g. /, /book/b001, /checkout).
+    - id: source
+      name: source
+      type: '#custom-type:event_source_type'
+      description: Emitting client. Fixed to web for the Next.js storefront.
+    - id: page_name
+      name: pageName
+      type: string
+      description: Human-readable page label passed to rudderanalytics.page.
+    - id: product_id
+      name: productId
+      type: string
+      description: Book id from the catalog (e.g. b001).
+    - id: title
+      name: title
+      type: string
+      description: Book title at event time.
+    - id: genre
+      name: genre
+      type: '#custom-type:book_genre_type'
+      description: Book genre at event time.
+    - id: price
+      name: price
+      type: number
+      description: Unit price of the book in USD.
+    - id: quantity
+      name: quantity
+      type: integer
+      description: Units added to the cart.
+    - id: item_count
+      name: itemCount
+      type: integer
+      description: Number of line items in the cart or order.
+    - id: cart_value
+      name: cartValue
+      type: number
+      description: Cart subtotal in USD when checkout starts.
+    - id: total
+      name: total
+      type: number
+      description: Order total in USD when purchase completes.
+    - id: order_id
+      name: orderId
+      type: string
+      description: Storefront order identifier.
+    - id: email
+      name: email
+      type: string
+      description: Customer email collected at checkout.

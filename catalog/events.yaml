@@ -1,0 +1,34 @@
+version: rudder/v1
+kind: events
+metadata:
+  name: books-shop-events
+spec:
+  events:
+    - id: page_view
+      name: page_view
+      event_type: page
+      description: Storefront page navigation (rudderanalytics.page).
+      category: '#category:browsing'
+    - id: product_viewed
+      name: product_viewed
+      event_type: track
+      description: Customer opened a book detail page.
+      category: '#category:browsing'
+    - id: cart_item_added
+      name: cart_item_added
+      event_type: track
+      description: Customer added a book to the cart.
+      category: '#category:cart'
+    - id: checkout_started
+      name: checkout_started
+      event_type: track
+      description: Customer submitted the checkout form.
+      category: '#category:checkout'
+    - id: order_completed
+      name: order_completed
+      event_type: track
+      description: Order placed successfully.
+      category: '#category:checkout'
+    - id: customer_identify
+      event_type: identify
+      description: Identify call with email when checkout provides one.

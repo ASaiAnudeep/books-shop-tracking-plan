@@ -1,0 +1,101 @@
+version: rudder/v1
+kind: tracking-plan
+metadata:
+  name: books-shop
+spec:
+  id: books_shop
+  display_name: 'Leaf & Lantern Books — Web Storefront'
+  description: >
+    Declared analytics contract for the books-shop Next.js storefront.
+    Aligns with analytics/schemas/*.json in ASaiAnudeep/books-shop and the
+    funnel events modeled in ASaiAnudeep/books-shop-dbt.
+  rules:
+    - type: event_rule
+      id: page_view_rule
+      event: '#event:page_view'
+      additional_properties: false
+      properties:
+        - property: '#property:path'
+          required: true
+        - property: '#property:source'
+          required: true
+        - property: '#property:page_name'
+          required: true
+
+    - type: event_rule
+      id: product_viewed_rule
+      event: '#event:product_viewed'
+      additional_properties: false
+      properties:
+        - property: '#property:path'
+          required: true
+        - property: '#property:source'
+          required: true
+        - property: '#property:product_id'
+          required: true
+        - property: '#property:title'
+          required: true
+        - property: '#property:genre'
+          required: true
+        - property: '#property:price'
+          required: true
+
+    - type: event_rule
+      id: cart_item_added_rule
+      event: '#event:cart_item_added'
+      additional_properties: false
+      properties:
+        - property: '#property:path'
+          required: true
+        - property: '#property:source'
+          required: true
+        - property: '#property:product_id'
+          required: true
+        - property: '#property:title'
+          required: true
+        - property: '#property:quantity'
+          required: true
+        - property: '#property:price'
+          required: true
+
+    - type: event_rule
+      id: checkout_started_rule
+      event: '#event:checkout_started'
+      additional_properties: false
+      properties:
+        - property: '#property:path'
+          required: true
+        - property: '#property:source'
+          required: true
+        - property: '#property:item_count'
+          required: true
+        - property: '#property:cart_value'
+          required: true
+        - property: '#property:email'
+          required: false
+
+    - type: event_rule
+      id: order_completed_rule
+      event: '#event:order_completed'
+      additional_properties: false
+      properties:
+        - property: '#property:path'
+          required: true
+        - property: '#property:source'
+          required: true
+        - property: '#property:order_id'
+          required: true
+        - property: '#property:item_count'
+          required: true
+        - property: '#property:total'
+          required: true
+        - property: '#property:email'
+          required: true
+
+    - type: event_rule
+      id: customer_identify_rule
+      event: '#event:customer_identify'
+      identity_section: traits
+      properties:
+        - property: '#property:email'
+          required: true

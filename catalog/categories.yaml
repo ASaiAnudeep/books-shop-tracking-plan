@@ -1,0 +1,15 @@
+version: rudder/v1
+kind: categories
+metadata:
+  name: books-shop-categories
+spec:
+  categories:
+    - id: browsing
+      name: browsing
+      description: Storefront navigation and product discovery.
+    - id: cart
+      name: cart
+      description: Cart mutations before checkout.
+    - id: checkout
+      name: checkout
+      description: Checkout and purchase completion.
